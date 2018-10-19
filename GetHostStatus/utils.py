@@ -71,7 +71,7 @@ def get_host_cpu(client, biz_id,job_instance_id,ip):
         if _d.get('is_finished'):
             is_finish = True
             logs = _d['step_results'][0].get('ip_logs')[0].get('log_content')
-            cpumem = logs
+            #cpumem = logs
             logs = logs.split('|')
             if logs and len(logs) >= 3:
                 cpu_data={
@@ -90,8 +90,10 @@ def get_host_cpu(client, biz_id,job_instance_id,ip):
                 print res
 
                 #回传网页
-                date = datetime.now()
-                date=date.strftime("%Y-%m-%d %H:%M:%S")
+                #date = datetime.now()
+                #date=date.strftime("%Y-%m-%d %H:%M:%S")
+                cpumem=logs[1]+'/'+logs[2]+'/'+logs[3]
+                date=logs[0]
                 cpumemdata={
                     "cpumem":cpumem,
                     'date':date,
