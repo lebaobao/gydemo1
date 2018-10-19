@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <!-- 若您需要使用Kendo UI Professional，请联系版权人获得合法的授权或许可。 -->
+    <!-- Bootstrap css -->
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <!-- kendo ui css -->
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/kendoui-2015.2.624/styles/kendo.common.min.css" rel="stylesheet">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/kendoui-2015.2.624/styles/kendo.default.min.css" rel="stylesheet">
+    <!-- font-awesome -->
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/fontawesome/css/font-awesome.css" rel="stylesheet">
+    <!--蓝鲸提供的公用样式库 -->
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css/bk.css" rel="stylesheet">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css/bk_pack.css" rel="stylesheet">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/datatables-1.10.7/dataTables.bootstrap.css" rel="stylesheet"/>
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css/bk.css" rel="stylesheet">
+    <!-- 如果要使用Bootstrap的js插件，必须先调入jQuery -->
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/jquery-1.10.2.min.js"></script>
+    <!-- 包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　-->
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/echarts-2.0/echarts-all.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/datatables-1.10.7/jquery.dataTables.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/datatables-1.10.7/dataTables.bootstrap.js"></script>
+    <!-- 包括所有kendoui的js插件或者可以根据需要使用的js插件调用　-->
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/kendoui-2015.2.624/js/kendo.all.min.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/assets/echarts-2.0/echarts-all.js"></script>
+    <script src="https://magicbox.bk.tencent.com/static_api/v3/bk/js/bk.js"></script>
+    <!-- 数据埋点统计 -->
+    <script src="http://magicbox.bk.tencent.com/static_api/analysis.js"></script>
+    <!-- 以下两个插件用于在IE8以及以下版本浏览器支持HTML5元素和媒体查询，如果不需要用可以移除 -->
+    <!--[if lt IE 9]><script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/html5shiv.min.js"></script><script src="https://magicbox.bk.tencent.com/static_api/v3/assets/js/respond.min.js"></script><![endif]-->
+</head>
+
+<body class="bg-white" data-bg-color="bg-white">
+    <div class="king-page-box">
+        <div class="king-container clearfix">
+            <nav class="">
+                <div style="overflow:hidden; z-index: inherit;" class="navbar king-horizontal-nav1  f14">
+                    <div class="navbar-container">
+                        <div class="navbar-header pull-left">
+                            <a class="navbar-brand" href="javascript:;">
+                                <img src="https://magicbox.bk.tencent.com/static_api/v3/bk/images/logo.png" class="logo"> </a>
+                        </div>
+                        <ul class="nav navbar-nav pull-left m0">
+                            <li><a href="${SITE_URL}GetHostStatus/">首页</a></li>
+                            <li><a href="${SITE_URL}GetHostStatus/hoststatus/">主机状态</a></li>
+                            <li class="active" ><a href="${SITE_URL}GetHostStatus/history/">操作记录</a></li>
+                        </ul>
+                        <div class="navbar-header pull-right">
+                            <ul class="nav">
+                                <li class="user-info">
+                                    <a href="javascript:;">
+                                        <img class="img-rounded" src="https://magicbox.bk.tencent.com/static_api/v3/components/horizontal_nav1/images/avatar.png">
+                                        <span>admin</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="king-block king-block-bordered king-block-themed mb0">
+                <div class="king-block-header king-info">
+                    <ul class="king-block-options">
+                        <li>
+                            <!-- <button type="button"><i class="fa fa-cog"></i></button> -->
+                        </li>
+                    </ul>
+                    <h3 class="king-block-title">历史操作记录</h3>
+                </div>
+                <div class="king-block-content">
+                    <form class="form-horizontal">
+                        <div class="form-group clearfix ">
+                            <label class="col-sm-3 control-label bk-lh30 pt0">搜索：</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control bk-valign-top" id="" placeholder="提示信息"> </div>
+                        </div>
+                    </form>
+                    <table class="table table-bordered table-hover " id="table_history">
+                        <thead>
+                            <tr>
+                                <th style="width: 100px;">#</th>
+                                <th style="width: 20%;">IP</th>
+                                <th style="width: 20%;">操作人</th>
+                                <th style="width: 20%;">操作时间</th>
+                                <th>操作类型</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table_history_tbody">
+
+                        </tbody>
+                    </table>
+                    <!-- 设置面板Start -->
+                    <template id="header_tpl_1538103726037">
+                        <tr>
+                                <th style="width: 100px;">#</th>
+                                <th style="width: 20%;">IP</th>
+                                <th style="width: 20%;">操作人</th>
+                                <th style="width: 20%;">操作时间</th>
+                                <th>操作类型</th>
+                        </tr>
+                    </template>
+                    <template id="tpl_1538103726037">
+                        <tr>
+                            <td style="width: 100px;">#id#</td>
+                            <td style="width: 20%;">#ip#</td>
+                            <td style="width: 20%;">#operstor#</td>
+                            <td style="width: 20%;">#createtime#</td>
+                            <td>#type#</td>
+                        </tr>
+                    </template>
+                    <!-- 设置面板End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+                function renderTpl(str, cfg) {
+                    var re = /(#(.+?)#)/g;
+
+                    return str.replace(re, function() {
+                        var val = cfg[arguments[2]]+'';
+                        if(typeof val == 'undefined') {
+                            val = '';
+                        }
+                        return val;
+                    });
+                }
+
+                // 异步请求后台数据
+                $.ajax({
+                    url: '${SITE_URL}GetHostStatus/get_historydata/',
+                    type: 'GET',
+                    success: function(res){
+                        var _html = ' ';
+                        var list = res.data;
+                        var tpl = $('#tpl_1538103726037').html();
+
+                        for (var i=0,len=list.length; i < len; i++){
+                            var item = list[i];
+                            _html += renderTpl(tpl, item)
+                        }
+                        $('#table_history_tbody').html(_html);
+                        var language = {
+                            search: '搜索：',
+                            lengthMenu: "每页显示 _MENU_ 记录",
+                            zeroRecords: "没找到相应的数据！",
+                            info: "分页 _PAGE_ / _PAGES_",
+                            infoEmpty: "暂无数据！",
+                            infoFiltered: "(从 _MAX_ 条数据中搜索)",
+                            paginate: {
+                                first: '首页',
+                                last: '尾页',
+                                previous: '上一页',
+                                next: '下一页',
+                            },
+                        };
+                        $('#table_history').dataTable({
+                          paging: true, //隐藏分页
+                          ordering: false, //关闭排序
+                          info: false, //隐藏左下角分页信息
+                          searching: false, //关闭搜索
+                          pageLength : 5, //每页显示几条数据
+                          lengthChange: false, //不允许用户改变表格每页显示的记录数
+                          language: language //汉化
+                        });
+                        $('.ranger-box thead').html(renderTpl(headerTpl,res.catalogues));
+                    }
+                });
+            });
+    </script>
+
+</body>
+
+</html>
